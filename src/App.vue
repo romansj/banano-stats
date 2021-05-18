@@ -85,19 +85,28 @@ export default {
   --nc-lk-1: var(--green);
   --nc-lk-2: var(--green);
   --nc-lk-tx: black;
+  --outlined-btn-tx: black;
   --nc-ac-1: var(--green);
 }
 
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-bg-color: #1c1c1c;
+    /*#0B0B0B*/
+    /*--nc-bg-1: Base background color*/
+    --nc-bg-1: #090909;
+    /* Heading text color*/
+    --nc-tx-1:#f5f5f5;
+
+
+    --main-bg-color: #0B0B0B;
     --icon-color: #f5f5f5;
     --text-color: #f5f5f5;
 
     --nc-lk-1: var(--green);
     --nc-lk-2: var(--green);
     --nc-lk-tx: black;
+    --outlined-btn-tx: #f5f5f5;
     --nc-ac-1: #767676;
 
 
@@ -203,6 +212,8 @@ button:not(:hover) {
   /*outlined, not filled like regular <button>, !important to prevent button overriding background color */
   background-color: transparent !important;
   border-radius: 10px;
+
+  color:var(--outlined-btn-tx);
 }
 
 a {
@@ -279,3 +290,4 @@ input[type=number] {
 }
 
 </style>
+
