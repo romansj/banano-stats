@@ -57,16 +57,6 @@ export default {
     dailyData: Array,
   },
 
-  watch: {
-    props: {
-      // the callback will be called immediately after the start of the observation
-      immediate: true,
-      handler(val, oldVal) {
-        this.calcStats(this.currentItem);
-      }
-    }
-  },
-
   mounted() {
     //console.log('stats mounted');
 
