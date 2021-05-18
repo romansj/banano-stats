@@ -1,10 +1,8 @@
 <template>
   <div class="item" id="app-2">
-    <h1>Stats page h1</h1>
     <div v-if="averageWUs!==0 && averagePaymentsPerDay!==0">
 
       <h3>User stats</h3>
-
 
       <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-bottom: 0 !important;">
         <figure>
@@ -64,21 +62,20 @@ export default {
       // the callback will be called immediately after the start of the observation
       immediate: true,
       handler(val, oldVal) {
-        console.log('oldVal', oldVal, 'val', val)
         this.calcStats(this.currentItem);
       }
     }
   },
 
   mounted() {
-    console.log('stats mounted');
+    //console.log('stats mounted');
 
     let emitter = require('tiny-emitter/instance');
 
-    console.log('emitter.currentItem()', emitter.currentItem);
+    //console.log('emitter.currentItem()', emitter.currentItem);
 
     emitter.on('createImage', () => {
-      console.log('createImage in stats', 'dd length', this.dailyData.length);
+      //console.log('createImage in stats', 'dd length', this.dailyData.length);
       this.calcStats(this.currentItem);
 
       this.userID = localStorage.getItem("user");

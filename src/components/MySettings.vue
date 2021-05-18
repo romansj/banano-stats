@@ -29,8 +29,6 @@ export default {
 
   methods: {
     scrollAndClear: function () {
-      console.log('clear clicked');
-
       this.clearStorage();
       window.scrollTo({top: 0, behavior: 'smooth'});
       setTimeout(() => location.reload(), 700);

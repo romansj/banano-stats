@@ -70,7 +70,7 @@ export default {
     let storedUserID = localStorage.getItem("user");
     inputField.val(storedUserID);
     if (storedUserID) {
-      console.log('storedID not null ' + storedUserID);
+      //console.log('storedID not null ' + storedUserID);
       this.fetchBananoUserStats();
     }
 
@@ -129,7 +129,7 @@ export default {
         if (tooSoon) {
 
           this.createDailyList();
-          console.log('tooSoon yes', 'dd length', this.dailyData.length);
+          //console.log('tooSoon yes', 'dd length', this.dailyData.length);
 
           this.calcStats();
 
