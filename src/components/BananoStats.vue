@@ -86,13 +86,15 @@ export default {
         {text: 'Past 30 days', intVal: 30, id: 1, title: 'Past 30 days'},
         {text: 'All time', intVal: -1, id: 2, title: 'All time'}],
 
-
       rangeIndex: 0,
 
       averagePaymentsPerDay: 0,
       averageWUs: 0,
       averagePoints: 0,
+
       banPerPoint: 0,
+      banPerWu: 0,
+
       totalAmount: 0,
       totalPoints: 0,
 
@@ -108,6 +110,7 @@ export default {
       arr.push({value: this.averageWUs.toFixed(2), description: 'average WUs a day'});
       arr.push({value: this.averagePoints.toFixed(0), description: 'average points a day'});
       arr.push({value: this.banPerPoint.toFixed(10), description: 'average BAN per point'});
+      arr.push({value: this.banPerWu.toFixed(10), description: 'average BAN per WU'});
       arr.push({value: this.totalAmount.toFixed(0), description: 'BAN received'});
       arr.push({value: this.totalPoints.toFixed(0), description: 'points gathered'});
       return arr;
@@ -179,6 +182,10 @@ export default {
       let banPerPointList = [];
       dataForCalc.forEach((value) => banPerPointList.push({bpp: value.amount / value.points}));
       this.banPerPoint = banPerPointList.reduce((total, next) => total + next.bpp, 0) / banPerPointList.length;
+
+      let banPerWuList = [];
+      dataForCalc.forEach((value) => banPerWuList.push({bpw: value.amount / value.work_units}));
+      this.banPerWu = banPerWuList.reduce((total, next) => total + next.bpw, 0) / banPerWuList.length;
 
 
       this.totalAmount = dataForCalc.reduce((prev, next) => prev + next.amount, 0);

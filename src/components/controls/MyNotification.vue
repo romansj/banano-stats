@@ -98,6 +98,7 @@ export default {
 
 .notification .material-icons {
   margin-left: 10px;
+  padding: 5px;
 
   cursor: pointer;
 
@@ -122,6 +123,7 @@ export default {
 
 
 .notification .span-text {
+  margin-left: 5px;
   text-align: start;
   align-self: center;
   justify-self: start;

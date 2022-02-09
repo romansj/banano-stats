@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <input placeholder="User ID" type="text" id="input_id" required>
-    <button :class="{'is-loading': isLoadingStats,'shake': badInput  }" @click="fetchBananoUserStats" id="btn_submit">Submit</button>
+    <button :class="{'is-loading': isLoadingStats,'shake': badInput}" @click="fetchBananoUserStats" id="btn_submit">Submit</button>
     <br>
     <span class="small-text" v-if="fetchDate!==''">Last updated: {{ fetchDate }}</span>
 
@@ -116,7 +116,6 @@ export default {
         return;
       }
 
-
       let url = 'https://bananominer.com/user_name/' + userID;
       this.userID = userID;
 
@@ -140,6 +139,9 @@ export default {
         //fetching info for different user than before
         //no need to check time diff then
       }
+
+
+      this.isLoadingStats = true; //to change button to loading
 
 
       fetch(url)
@@ -212,7 +214,6 @@ export default {
       console.log("diffMins " + diffMinutes)
 
       //dont fetch too often!
-      this.isLoadingStats = true; //to change button to loading
       if (diffMinutes < 2 && diffMinutes !== 0) {
         this.fetchDate = fetchDate.toDateString() + ' ' + fetchDate.toLocaleTimeString('en-GB', {hour: "numeric", minute: "numeric"});
 
@@ -273,10 +274,13 @@ export default {
     },
 
     calcStats: function () {
-      setTimeout(()=>{
+      setTimeout(() => {
         let emitter = require('tiny-emitter/instance');
         emitter.emit('createImage');
-      },500);
+      }, 500);
+
+
+      setTimeout(() => this.isLoadingStats = false, 1000);
 
     },
 
